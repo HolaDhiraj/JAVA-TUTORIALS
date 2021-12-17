@@ -1,0 +1,370 @@
+import java.util.*;
+import java.util.Random;
+import javax.swing.JOptionPane;
+public class Project {
+
+	public static void main(String[] args) {
+	
+		int x = 3;
+		int y = 4;
+		add(x,y);
+	}
+	static int add(int x, int y) {
+		
+		return 0;
+	}
+		
+}	
+		
+		
+		/*method
+	String name = "bro";
+	int age = 24;
+	hello(name,age);
+	
+	
+		
+	}
+	static void hello(String name, int age) {
+		System.out.println("hello " +name+ " your age is " +age);
+		
+	      }
+	 }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/* Stage First
+		/*
+		//for each
+		//String[] animals = {"cat","dog","tiger"};
+		/*ArrayList<String> animals = new ArrayList<String>();
+		animals.add("cat");
+		animals.add("cat");
+		animals.add("cat");
+		
+		for(String i: animals) {
+			System.out.println(i);
+		}*/
+		
+		
+		
+		//array of array
+		/*ArrayList<ArrayList<String>> dailyfood = new ArrayList();
+		
+		ArrayList<String> foodList = new ArrayList();
+		foodList.add("Rice");
+		foodList.add("Chapati");
+		foodList.add("MOMO");
+		
+		
+	    ArrayList<String> colddrink = new ArrayList();
+		colddrink.add("Coke");
+		colddrink.add("Fanta");
+		colddrink.add("Sprite");
+		
+		ArrayList<String> alcohol = new ArrayList();
+		alcohol.add("Wine");
+		alcohol.add("Vodka");
+		alcohol.add("Golden Oak");
+		
+		dailyfood.add(foodList);
+		dailyfood.add(colddrink);
+		dailyfood.add(alcohol);
+		System.out.println(dailyfood.get(2).get(2));
+		*/
+		
+		
+		
+		
+		/*//2-D array with nested for loop
+				String[][] text = {{"I","Need","You"},
+						           {"I","Like","you"},
+						           {"I","Love","YOU"}};
+				for(int k = 5;k >= 0; k--)
+		           {	System.out.println(k);
+		           }
+				System.out.println("Let's go!!!");
+				for(int i = 0; i < text.length; i++)
+				{
+					System.out.println();
+					for(int j = 0; j < text.length; j++)
+					    System.out.print(text[i][j]);
+				}*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// arraylist = a resizeable array.
+		//        elements can be added and removed after compilation phase store reference data type 
+		/*ArrayList<String> food = new ArrayList<String>();
+		food.add("pizza");
+		food.add("Thuppa");
+		food.add("MOMO");
+		
+		food.set(0, "Rice");
+		food.remove("MOMO");
+		
+		
+		for(int i = 0; i<food.size(); i++)
+			System.out.println(food.get(i));*/
+		
+	    
+		
+		
+		/*
+		String name = "  Dhiraj  ";
+		String result = name.replace("r", "R");
+		//String result = name.trim();
+		//String result = name.toUpperCase();
+		//boolean result = name.isEmpty();
+		//int result = name.indexOf("j");
+		//char result = name.charAt(4);
+		//int result = name.length();
+		//Boolean result = name.equalsIgnoreCase("DHIRAJ");//IgnoreCase ignores upper or lower case
+		System.out.println(result);
+		*/
+		
+		
+		
+		
+		
+		
+		//array
+		/* String[] fruits = {"mango", "orange", "grapes"};
+		for(int i = 0; i < fruits.length; i++){
+			System.out.println(fruits[i]);
+		}*/
+		
+		
+		
+		
+		//nested loop 
+		/* Scanner scanner = new Scanner(System.in);
+		int rows;
+		int columns;
+		String alphabet;
+		
+		System.out.println("Enter the number of rows to display:");
+		rows = scanner.nextInt();
+		System.out.println("Enter the number of columns to display:");
+		columns = scanner.nextInt();
+		System.out.println("Enter number to display:");
+		alphabet = scanner.next();
+		
+		for(int i = 1; i <= rows; i++) {
+			System.out.println();
+		    for(int j = 1; j <= columns; j++) {
+			    System.out.print(alphabet);
+			 
+		    }
+		}
+		  System.out.println();
+		System.out.println("This is " +rows+ " * " +columns+ " matrix" );
+		*/
+		
+		// for loop
+		/*
+		for(int i = 10;i >= 0; i--)
+		{	System.out.println(i);
+		}
+		System.out.println("Happy new year!!");
+		*/
+		
+		// while loop
+		/* Scanner scanner = new Scanner(System.in);
+		String name = "";
+		
+		while(name.isBlank()) {
+			System.out.println(" First Enter the name:");
+			name = scanner.nextLine();
+		}
+		System.out.println("hi " +name);
+		*/
+		
+		
+		// "|| , or" operation
+		 /*Scanner scanner = new Scanner(System.in);
+			System.out.println("Enter 'a' and 'A' for previous section!!");
+			String key = scanner.next();
+			
+			if (key.equals("a") || key.equals("A") )
+			{
+				System.out.println("u r back now");
+			}
+			else
+			{
+				System.out.println("you r in same place");
+			}
+		*/
+		
+		
+		//switch
+		/*
+		String day = "friday";
+		switch(day)
+		{
+		case "sunday" : System.out.println("it is sunday");break;
+		case "tuesday" :System.out.println("it is tuesday");break;
+		case "friday" : System.out.println("it is friday");break;
+		default: System.out.println("Error!!!"); break;
+		}
+		*/
+		
+	// if program
+		/* Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter your age:");
+		int age = scanner.nextInt();
+		
+		if (age<=14)
+		{
+			System.out.println(age+ "you are Childeren");
+		}
+		else if (age > 14 && age < 25)
+		{
+			System.out.println(age+ "you are youth");
+		}
+		
+		else if (age > 25 && age < 64)
+		{
+			System.out.println(age+ "you are adult");
+		}
+		else
+		{
+			System.out.println(age+"you are Seniors");
+		}
+		
+		*/
+		
+		
+		
+		
+		//Random random = new Random();
+		//int x = random.nextInt(6)+1;
+		//System.out.println(x);
+		
+		
+           // maths 
+		/*	 
+		double p;
+		double b;
+		
+		
+		Scanner scanner= new Scanner(System.in);
+		System.out.println("Enter the p:");
+		 p = scanner.nextDouble();
+		System.out.println("Enter the b:");
+		 b = scanner.nextDouble();
+		
+		
+		 double z =  Math.sqrt((p*p)+(b*b));
+		
+		 
+		JOptionPane.showMessageDialog(null, "hypotenous is "+z);
+		scanner.close();
+		
+		
+		
+		
+		
+		double x = 10.10;
+		double y = -15.12;
+		
+		double z = Math.max(x, y);
+		System.out.println(z);
+		double w = Math.abs(y);
+		System.out.println(w);*/
+		
+		
+		
+		
+		
+		
+		
+		/*// small java GUI 
+		String name = JOptionPane.showInputDialog("Enter your name");
+		JOptionPane.showMessageDialog(null,"Hello "+name);
+		
+		int age = Integer.parseInt(JOptionPane.showInputDialog("Enter the age"));
+		JOptionPane.showMessageDialog(null,"you'r "+age+ "yrs old");
+		
+		Double height = Double.parseDouble(JOptionPane.showInputDialog("Enter your height"));
+		JOptionPane.showMessageDialog(null,"your height is "+height);
+		*/
+		
+		/* double hi=10;
+		hi= (double) hi / 3;
+		System.out.println(hi);*/
+		
+		
+		
+	/* user input
+	 	Scanner scanner = new Scanner (System.in);
+		System.out.println("Which language is this?");
+		String lang= scanner.nextLine();
+		System.out.println("Day:");
+		int day = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("IDE?");
+		String IDE= scanner.nextLine();
+		
+		
+		System.out.println( lang+ " programming language");
+		System.out.println("challenges day!!! "+day);
+		System.out.println(IDE+ " IDE(Integrated Development Environment");
+		
+		System.out.println("To be Continued !!!");
+	*/	
+		
+		
+		
+		//System.out.println("hello");
+	   //System.out.println("hello");
+       //integer x; //declaration
+       //x=123;
+      // float y = 456;
+		//char symbol ='@';
+		//String name = "iraj";
+       //System.out.println(name + symbol);
+		
+		 /*Swaping two string  
+		    String x="hello";
+		String y="hi";
+		String temp;
+		temp=x;
+		x=y;
+		y=temp;
+		
+		System.out.println("x:"+x);
+		System.out.println("y:"+y); 
+	}
+
+} End of Second Stage
+     */

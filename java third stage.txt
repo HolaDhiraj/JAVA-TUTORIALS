@@ -1,0 +1,3354 @@
+
+
+**************************************************************************************************
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class Project{
+	public static void main(String [] args) throws InterruptedException  {
+		
+		// multiThreading = process of executing multiple threads simultaneously that
+		// that helps maximum utilization of CPU 
+		// threads are independent,they don't affect the execution of other threads.
+		//an exception of one thread will not interrupt other threads
+		// useful for serving multiple clients, multiplayer games,or other mutually independent task
+		
+		
+		
+		MyThread thread1 = new MyThread ();
+		
+		
+		
+		MyRunnable runnable1 = new MyRunnable ();
+		Thread thread2 = new Thread(runnable1);
+		
+		thread1.setDaemon(true);
+		thread2.setDaemon(true);
+		
+		thread1.start();
+		//thread1.join();calling thread ex main wait until the specifies thread dies or for x amount of miliseconds
+		
+		thread2.start();
+		
+		System.out.println(1/0);
+		
+     }
+}
+
+class MyThread extends Thread{
+	
+	public void run() {
+		
+		for(int i = 10; i>0; i--) {
+			System.out.println("thread #1 :"+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+			//System.out.println(1/0);
+		}
+			System.out.println("Thread #1 is finished!!");
+		}
+	}
+
+
+class MyRunnable implements Runnable{
+	
+	public void run() {
+		
+		for(int i = 0; i<10; i++) {
+			System.out.println("thread #2 :"+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
+			System.out.println("Thread #2 is finished!!");
+		}
+		
+	}
+
+******************************************************************************************
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class Project{
+	public static void main(String [] args) throws InterruptedException  {
+		
+		// multiThreading = process of executing multiple threads simultaneously that
+		// that helps maximum utilization of CPU 
+		// threads are independent,they don't affect the execution of other threads.
+		//an exception of one thread will not interrupt other threads
+		// useful for serving multiple clients, multiplayer games,or other mutually independent task
+		
+		
+		
+		MyThread thread1 = new MyThread ();
+		
+		
+		MyRunnable runnable1 = new MyRunnable ();
+		Thread thread2 = new Thread(runnable1);
+		
+		
+		thread1.start();
+		thread2.start();
+		
+     }
+}
+
+class MyThread extends Thread{
+	
+	public void run() {
+		
+		for(int i = 10; i>0; i--) {
+			System.out.println("thread #1 :"+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
+			System.out.println("Thread #1 is finished!!");
+		}
+	}
+
+
+class MyRunnable implements Runnable{
+	
+	public void run() {
+		
+		for(int i = 0; i<10; i++) {
+			System.out.println("thread #2 :"+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
+			System.out.println("Thread #2 is finished!!");
+		}
+		
+	}
+
+*****************************************************************************************************
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class Project{
+	public static void main(String [] args) throws InterruptedException  {
+		
+		//thread
+		
+		//System.out.println(Thread.activeCount());//counts the running thread
+		
+		
+		//Thread.currentThread().setName("Mainnnnnnnnn");//change the name of current thread
+		//System.out.println(Thread.currentThread().getName());//current thread name
+		
+		//Thread.currentThread().setPriority(10);
+		//System.out.println(Thread.currentThread().getPriority());
+		
+		//System.out.println(Thread.currentThread().isAlive());
+		
+		//for(int i = 3; i>0;i--) {
+			//System.out.println(i);
+			//Thread.sleep(1000);
+		//}
+		
+		//System.out.println("you r done ");
+		
+		
+		MyThread thread2 = new MyThread ();
+	
+		thread2.setDaemon(true);
+		System.out.println(thread2.isDaemon());
+		thread2.start();
+		//System.out.println(thread2.isAlive());
+		
+		//thread2.setName("@ndThread");
+		//System.out.println(thread2.getName());
+		
+		//thread2.setPriority(10);
+	    //System.out.println(thread2.getPriority());
+	    //System.out.println(Thread.activeCount());
+	}
+}
+
+class MyThread extends Thread{
+	
+     public void run() {
+    	 if(this.isDaemon()) {
+    	 System.out.println("this thread is running");
+     }
+    	 else {
+    		 System.out.println("this is user thread that is running");
+    	 }
+     }
+}
+
+
+******************************************************************
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class Project{
+	public static void main(String [] args) throws InterruptedException  {
+		
+		//thread
+		
+		//System.out.println(Thread.activeCount());//counts the running thread
+		
+		
+		//Thread.currentThread().setName("Mainnnnnnnnn");//change the name of current thread
+		//System.out.println(Thread.currentThread().getName());//current thread name
+		
+		//Thread.currentThread().setPriority(10);
+		//System.out.println(Thread.currentThread().getPriority());
+		
+		//System.out.println(Thread.currentThread().isAlive());
+		
+		//for(int i = 3; i>0;i--) {
+			//System.out.println(i);
+			//Thread.sleep(1000);
+		//}
+		
+		//System.out.println("you r done ");
+		
+		
+		MyThread thread2 = new MyThread ();
+		thread2.start();
+		
+		System.out.println(thread2.isAlive());
+		
+		//thread2.setName("@ndThread");
+		//System.out.println(thread2.getName());
+		
+		//thread2.setPriority(10);
+	    //System.out.println(thread2.getPriority());
+	    System.out.println(Thread.activeCount());
+	}
+}
+
+class MyThread extends Thread{
+	
+     public void run() {
+    	 System.out.println("this thread is running");
+     }
+}
+
+
+
+
+
+
+
+
+
+
+
+****************************************************************************************
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class Project{
+	public static void main(String [] args)  {
+		
+
+		//Timer = a facility for threads to schedule tasks
+            //    for future execution in a background thread
+		//TimerTask = a task that can be scheduled for one-time or repeated execution by a timer
+
+		
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask(){
+		int counter = 10;
+
+			@Override
+			public void run() {
+				//System.out.println("Task is complete");
+				if(counter > 0) {
+					System.out.println(counter+ " seconds");
+					counter--;
+				}
+				else {
+					System.out.println("happy new year!!!");
+					timer.cancel();
+				}
+			}
+			
+		};
+		
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.YEAR,2021);
+		date.set(Calendar.MONTH,Calendar.JUNE);
+		date.set(Calendar.DAY_OF_MONTH,22);
+		date.set(Calendar.HOUR_OF_DAY,0);
+		date.set(Calendar.MINUTE,0);
+		date.set(Calendar.SECOND,0);
+		date.set(Calendar.MILLISECOND,0);
+		
+		
+		
+		//timer.schedule(task, 3000);
+		
+		//timer.schedule(task, date.getTime());
+		
+		//timer.scheduleAtFixedRate(task, 0,1000);
+		timer.scheduleAtFixedRate(task,date.getTime(),1000);
+	}
+}
+
+*******************************************************************************************
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+
+public class Project{
+	public static void main(String [] args) throws IOException, ClassNotFoundException {
+
+		/*
+		  // important notes	1. children classes of a parent class that implements Serializable will do so as well
+		   //					2. static fields are not serialized (they belong to the class, not an individual object)
+		   //					3. Fields declared as "transient" aren't serialized, they're ignored
+		   //					4. the class's definition ("class file") itself is not recorded, cast it as the object type
+		   //					5. serialVersionUID is a unique version ID for a class that is serializable
+		
+		   //SerialVersionUID =	serialVersionUID is a unique ID that functions like a version #
+		   //					verifies that the sender and receiver of a serialized object,
+		   //					have loaded classes for that object that are compatible
+		   //					Ensures object will be compatible between machines
+		   //					Number must match. otherwise this will cause a InvalidClassException
+		   //					A SerialVersionUID will be calculated based on class properties, members, etc.
+		   //					A serializable class can declare its own serialVersionUID explicitly (recommended)
+		
+		
+		User user = null;
+		FileInputStream fileIn = new FileInputStream("userinfo.ser");
+		ObjectInputStream in = new ObjectInputStream(fileIn);
+		user = (User) in.readObject();
+		in.close(); fileIn.close();
+		
+		System.out.println(user.name);
+		System.out.println(user.password);
+		user.sayHello();
+		
+	}
+}
+class User implements Serializable{
+	
+	String name;
+	 //transient String password;
+	String password;
+	
+	public void sayHello() {
+		System.out.println("hello " + name);
+	}
+}	
+		
+*/	
+	
+		
+		
+		
+		
+		
+		
+	
+		
+	//serialization = the process of converting an object into a byte stream.
+		//       persists (saves the state) the object after program exits
+		//      this byte stream can be saved as a file or sent over a network
+		//       can be sent to a different machine
+		//     Byte stream can be saved as a file(.ser) which is platform independent 
+		//        (thing of this as if you're saving a file with the object's information) 
+		
+		
+		
+		
+		//steps of serialization
+		//1. your object class should implement serializable interface
+		//2. add import java.io.serializable;
+		//3.  FileOutputStream fileout = new FileOutputStream(filepath);
+		//4. ObjectOutputStream out = new ObjectOutputStream();
+		//5. out.writeObject(objectName);
+		//6. out.close();  fileout.close();
+		
+		
+		User user = new User();
+		user.name = "DheRu";
+		user.password = "Morning";
+		
+		//user.sayHello();
+		FileOutputStream fileout = new FileOutputStream("userinfo.ser");
+		ObjectOutputStream out = new ObjectOutputStream(fileout);
+		out.writeObject(user);
+		out.close();
+		fileout.close();
+	
+		System.out.println("object info Saved!!!");
+		
+		 long serialVersionUID = ObjectStreamClass.lookup(user.getClass()).getSerialVersionUID();
+	      System.out.println("serialVersionUID: "+serialVersionUID);
+	    
+	 	
+	}
+}
+
+class User implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1;
+	String name;
+	 //transient String password;
+	String password;
+	
+	public void sayHello() {
+		System.out.println("hello " + name);
+	}
+	
+	
+}
+
+
+**************************************************************************************
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+
+public class Project{
+	public static void main(String [] args) throws IOException, ClassNotFoundException {
+
+		//Deserialiable
+		//Deserialization = the reverse process of converting a byte stream into an object.
+				//              (think of this as if you're loading a saved file)
+		
+		  //					Steps to Deserialize
+		   //					---------------------------------------------------------------
+		   //					1. Your class should implement Serializable interface
+		   //					2. add import java.io.Serializable;
+		   //					3. FileInputStream fileIn = new FileInputStream(file path);
+		   //					4. ObjectInputStream in = new ObjectInputStream(fileIn);
+		   //					5. objectNam = (Class) in.readObject();
+		   //					6. in.close(); fileIn.close();
+		   //					------------------
+		
+		User user = null;
+		FileInputStream fileIn = new FileInputStream("userinfo.ser");
+		ObjectInputStream in = new ObjectInputStream(fileIn);
+		user = (User) in.readObject();
+		in.close(); fileIn.close();
+		
+		System.out.println(user.name);
+		System.out.println(user.password);
+		user.sayHello();
+		
+	}
+}
+class User implements Serializable{
+	
+	String name;
+	String password;
+	
+	public void sayHello() {
+		System.out.println("hello " + name);
+	}
+}	
+		
+		/*
+	//serialization = the process of converting an object into a byte stream.
+		//       persists (saves the state) the object after program exits
+		//      this byte stream can be saved as a file or sent over a network
+		//       can be sent to a different machine
+		//     Byte stream can be saved as a file(.ser) which is platform independent 
+		//        (thing of this as if you're saving a file with the object's information) 
+		
+		
+		
+		
+		//steps of serialization
+		//1. your object class should implement serializable interface
+		//2. add import java.io.serializable;
+		//3.  FileOutputStream fileout = new FileOutputStream(filepath);
+		//4. ObjectOutputStream out = new ObjectOutputStream();
+		//5. out.writeObject(objectName);
+		//6. out.close();  fileout.close();
+		
+		
+		User user = new User();
+		user.name = "DheRu";
+		user.password = "Morning";
+		
+		//user.sayHello();
+		FileOutputStream fileout = new FileOutputStream("userinfo.ser");
+		ObjectOutputStream out = new ObjectOutputStream(fileout);
+		out.writeObject(user);
+		out.close();
+		fileout.close();
+	
+		System.out.println("object info Saved!!!");
+	}
+}
+
+class User implements Serializable{
+	
+	String name;
+	String password;
+	
+	public void sayHello() {
+		System.out.println("hello " + name);
+	}
+	
+	
+}
+*/
+
+***************************************************************************************************
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		 
+		//bounded types = you can create the objects of a generic class to have data
+		//    of specific derived type ex.Number 
+		
+		MyGenericClass <Integer,Integer> myint = new MyGenericClass <> (1,9);
+		MyGenericClass <Double,Double> mydou = new MyGenericClass <>(1.13,1.2);
+		
+		
+		
+		
+		
+		System.out.println(myint.getvalue());
+		System.out.println(mydou.getvalue());
+		
+		
+	}
+}
+ 
+class MyGenericClass <Thing extends Number,Thing2 extends Number>{
+	Thing x;
+	Thing2 y;
+	MyGenericClass(Thing x,Thing2 y){
+		this.x = x;
+		this.y = y;
+	}
+	public Thing2 getvalue() {
+		return y;
+	}
+	
+}
+
+
+
+**********************************************************************************************************
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		 
+		//generic class
+		
+		MyGenericClass <Integer,Integer> myint = new MyGenericClass <> (1,9);
+		MyGenericClass <Double,Double> mydou = new MyGenericClass <>(1.13,1.2);
+		MyGenericClass <Character,Character> mychar = new MyGenericClass <>('@','$');
+		MyGenericClass <String,Character>  mystr = new MyGenericClass <>("Hello",'/');
+		
+		//ArrayList<Integer> myfriends = new ArrayList<>(); Arraylist is a generic class that store every data type
+		//HashMap<Integer,String> user = new HashMap<>();
+		
+		
+		System.out.println(myint.getvalue());
+		System.out.println(mydou.getvalue());
+		System.out.println(mychar.getvalue());
+		System.out.println(mystr.getvalue());
+		
+	}
+}
+ 
+class MyGenericClass <Thing,Thing2>{
+	Thing x;
+	Thing2 y;
+	MyGenericClass(Thing x,Thing2 y){
+		this.x = x;
+		this.y = y;
+	}
+	public Thing2 getvalue() {
+		return y;
+	}
+	
+}
+
+
+/*
+class MyIntegerClass{
+	
+	Integer x;
+	
+	MyIntegerClass(Integer x){
+		this.x = x;
+	}
+	public Integer getvalue() {
+		return x;
+	}
+}
+
+
+class MyDoubleClass{
+	
+	Double x;
+	
+	MyDoubleClass(Double x){
+		this.x = x;
+	}
+	public Double getvalue() {
+		return x;
+	}
+}
+
+class MyCharacterClass{
+	
+	Character x;
+	
+	 MyCharacterClass(Character x){
+		this.x = x;
+	}
+	public Character getvalue() {
+		return x;
+	}
+}
+
+class MyStringClass{
+	
+	String x;
+	
+	MyStringClass(String x){
+		this.x = x;
+	}
+	public String getvalue() {
+		return x;
+	}
+}
+*/
+
+**************************************************************************************
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		 
+		//generic = enable types(classes and interface) to be parameters when defining:
+		//classes,interface and methods
+		// a benefits is to eliminate the need to create multiple versions
+		//of methods or classes for various data type
+		//use 1 version for all reference data types
+		
+		Player player = new Player();
+		Enemy enemy = new enemy();
+		Item item = new Items();
+		Tree tree = new Tree()
+		
+				
+				
+		draw(player);
+		draw(enemy);
+		draw(item);
+		draw(tree);
+		
+		
+		
+		
+		}
+
+	public static <Thing> void draw(Thing x) {
+		
+		x.draw();
+		
+		}
+		
+}
+
+**************************************************************************************************
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		 
+		//generic = enable types(classes and interface) to be parameters when defining:
+		//classes,interface and methods
+		// a benefits is to eliminate the need to create multiple versions
+		//of methods or classes for various data type
+		//use 1 version for all reference data types
+		
+		Integer[] intArray = {1, 2, 3, 4, 5};
+		Double[] doubleArray = {1.2,2.4,3.4,4.4,5.2};
+		Character[] charArray = {'F','D','G','E'};
+		String[] stringArray = {"B","D","F","I"};
+		
+		//displayArray(intArray);
+		//displayArray(doubleArray);
+		//displayArray(charArray);
+		//displayArray(stringArray);
+		
+		System.out.println(getfirst(intArray));
+		System.out.println(getfirst(doubleArray));
+		System.out.println(getfirst(charArray));
+		System.out.println(getfirst(stringArray));
+		
+		
+		}
+
+	public static <Thing> void displayArray(Thing[] array) {
+		
+		for(Thing x : array) {
+			System.out.print(x+ " ");
+		}
+		System.out.println();
+	}
+public static <Thing> Thing getfirst(Thing[] array) {
+		
+		return array[0];
+		}
+		
+	}
+
+***************************************************************************************************
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		 
+		new MyFrame();
+		
+		
+	}
+}
+class MyFrame extends JFrame{
+		
+		MyPanel panel;
+		
+		MyFrame(){
+			panel = new MyPanel();
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.add(panel);
+			this.pack();
+			this.setLocationRelativeTo(null);
+			this.setVisible(true);
+		}
+	}
+		
+	class MyPanel extends JPanel implements ActionListener{
+		
+		final int PANEL_WIDTH = 500;
+		final int PANEL_HEIGHT = 500;
+		Image enemy;
+		Image backimg;
+		Timer timer;
+		int xVelocity = 2;
+		int yVelocity = 1;
+		int x = 0;
+		int y = 0;
+		
+		MyPanel(){
+			
+			
+			this.setPreferredSize(new Dimension(PANEL_WIDTH,PANEL_HEIGHT));
+			this.setBackground(Color.BLACK);
+			enemy = new ImageIcon("rocket.png").getImage();
+			backimg = new ImageIcon("hamburger.png").getImage();
+			
+			timer = new Timer(10,this);
+			timer.start();
+			
+		}
+		
+		public void paint(Graphics g) {
+			
+			super.paint(g);//paint background
+			
+			Graphics2D g2d = (Graphics2D) g;
+			
+			g2d.drawImage(backimg, 0, 0, null);
+			g2d.drawImage(enemy, x, y, null);
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(x>=PANEL_WIDTH - enemy.getWidth(null) || x<0 ) {
+				 xVelocity =  xVelocity* -1;
+			}
+			
+			x = x + xVelocity;
+			
+			
+			if(y>=PANEL_HEIGHT - enemy.getHeight(null) || y<0 ) {
+				 yVelocity =  yVelocity* -1;
+			}
+			
+			y = y + yVelocity;
+			
+			repaint();
+			
+			
+			
+		}
+	}
+		
+
+*************************************************************************************
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		
+		
+		new MyFrame();
+		
+		
+		
+	}
+}
+class MyFrame extends JFrame{
+      
+	MyPanel panel;
+	MyFrame(){
+		 panel = new MyPanel();
+		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 
+		 
+		 this.add(panel);
+		 this.pack();
+		 
+		 this.setLocationRelativeTo(null);//frame will be visible on middle of screen 
+		 this.setVisible(true);
+	 }
+
+	 
+}
+	
+	class MyPanel extends JPanel{
+		
+		Image image;
+		MyPanel(){
+			image = new ImageIcon("Hamburger.png").getImage();
+			this.setPreferredSize(new Dimension (500,500));
+			
+		}
+		
+		 public void paint(Graphics g) {  
+			 
+			  Graphics2D g2d = (Graphics2D) g; 
+			  g2d.drawImage(image, 0, 0, null);
+			  
+			  g2d.setPaint(Color.blue);
+			  //g2d.setStroke(new BasicStroke(5));
+			  //g2d.drawLine(0, 0, 500, 500);
+			  
+			 // g2d.setPaint(Color.pink);
+			  //g2d.drawRect(0, 0, 100, 100);
+			 // g2d.fillRect(0, 0, 100, 100);
+			  
+			  //g2d.setPaint(Color.orange);
+			  //g2d.drawOval(0, 0, 100, 100);
+			  //g2d.fillOval(0, 0, 100, 100);
+			  
+			  g2d.setPaint(Color.red);
+			  g2d.drawArc(0, 0, 100, 100, 180, 180);
+			  g2d.fillArc(0, 0, 100, 100, 0, 180);
+			  g2d.setPaint(Color.white);
+			  g2d.fillArc(0, 0, 100, 100, 180, 180);
+			  
+			  int[] xPoints = {150,250,350};
+			  int[] yPoints = {300,150,300};
+			  g2d.setPaint(Color.yellow);
+			  g2d.drawPolygon(xPoints, yPoints, 3);
+			  g2d.fillPolygon(xPoints, yPoints, 3);
+			  
+			  //g2d.setPaint(Color.magenta);
+			  //g2d.setFont(new Font("Ink Free",Font.BOLD,25));
+			  //g2d.drawString("Dhiraj", 50, 50);
+			  
+			  
+			 
+		  }
+	}
+
+***********************************************************************************************************
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		
+		//key binding = bind an action to a keystroke don't require you to click a component to give it focus
+		// all swing components use a key bindings
+		//increased flexibility compared to keylistener
+		//can assign key stroke to individual swing component
+        // more difficult to utilize and setup 
+		
+		Game game = new Game();
+		
+		
+		
+	}
+}
+class Game{
+	
+	
+	JFrame frame;
+	JLabel label;
+	Action upaction;
+	Action downaction;
+	Action leftaction;
+	Action rightaction;
+	
+	Game(){
+		
+		frame = new JFrame("KeyBinding");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(420,420);
+		frame.setLayout(null);
+		
+		label = new JLabel();
+		label.setBackground(Color.red);
+		label.setBounds(100,100,100,100);
+		label.setOpaque(true);
+		
+		upaction = new UpAction();
+		downaction = new DownAction();
+		leftaction = new LeftAction();
+		rightaction = new RightAction();
+		
+		label.getInputMap().put(KeyStroke.getKeyStroke("UP"), "UpAction");//also you can choose key "UP" to single 'w'
+		label.getActionMap().put("UpAction", upaction);
+		
+		label.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "DownAction");
+		label.getActionMap().put("DownAction", downaction);
+		
+		label.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "LeftAction");
+		label.getActionMap().put("LeftAction", leftaction);
+		
+		label.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "RightAction");
+		label.getActionMap().put("RightAction", rightaction);
+		
+		
+		frame.add(label);
+		frame.setVisible(true);
+		
+		
+	}
+	
+	public class UpAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setLocation(label.getX(), label.getY()-10);
+			
+		}
+		
+		
+		
+	}
+	
+	
+	public class DownAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setLocation(label.getX(), label.getY()+10);
+			
+		}
+		
+		
+		
+	}
+	
+	
+	
+	public class LeftAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setLocation(label.getX()-10, label.getY());
+			
+		}
+		
+		
+		
+	}
+	
+	
+	public class RightAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setLocation(label.getX()+10, label.getY());
+			
+		}		
+	}	
+}
+*****************************************************************************************************
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+				
+		MyFrame myframe = new MyFrame();
+		
+		
+		
+	}
+}
+	class MyFrame extends JFrame{
+		
+		DragPanel dragpanel = new DragPanel();
+		
+		
+		MyFrame(){
+			this.add(dragpanel);
+			this.setTitle("Drag and Drop");
+			this.setSize(600,600);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setVisible(true);
+		}
+		
+	}
+		
+	class DragPanel extends JPanel{
+	
+		ImageIcon image = new ImageIcon("file.png");
+		final int WIDTH = image.getIconWidth();
+		final int HEIGHT = image.getIconHeight();
+		Point imageCorner;
+		Point prePt;
+		
+		
+		DragPanel(){
+			imageCorner = new Point(0,0);
+			ClickListener clicklistener = new ClickListener();
+			DragListener draglistener = new  DragListener();
+			this.addMouseListener(clicklistener);
+			this.addMouseMotionListener(draglistener);
+		}
+		
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			image.paintIcon(this, g,(int) imageCorner.getX(),(int) imageCorner.getY());
+		}
+		
+		private class ClickListener extends MouseAdapter{
+			
+			public void mousePressed(MouseEvent e) {
+				prePt= e.getPoint();
+			}
+		}
+		
+		private class DragListener extends MouseMotionAdapter{
+			public void mouseDragged(MouseEvent e) {
+				Point currentPt = e.getPoint();
+				
+				imageCorner.translate(
+				    (int)(currentPt.getX() - prePt.getX()),
+				    (int)(currentPt.getY() - prePt.getY())
+				    					    		
+	      		);
+				prePt = currentPt;
+				repaint();
+			}
+		}
+	}
+	
+*************************************************************************
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+				
+		MyFrame frame = new MyFrame();
+		
+		
+	}
+}
+
+class MyFrame extends JFrame implements MouseListener{
+	
+	JLabel label;
+	ImageIcon rocket;
+	ImageIcon save;
+	ImageIcon load;
+	ImageIcon exit;
+	
+	MyFrame(){
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(500,500);
+		//this.setLayout(null);
+		this.setLayout(new FlowLayout());
+		
+		label = new JLabel();
+		label.addMouseListener(this);
+		 
+		rocket = new ImageIcon("rocket.png");
+		save = new ImageIcon("save.png");
+		load = new ImageIcon("load.png");
+		exit = new ImageIcon("exit.png");
+		
+		label.setIcon(rocket);
+		
+		
+		this.add(label);
+		this.pack();
+		
+		//label = new JLabel();
+		//label.setBounds(0,0,100,100);
+		//label.setBackground(Color.red);
+		//label.setOpaque(true);
+		//label.addMouseListener(this);
+		
+		
+		//this.add(label);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		//System.out.println("you clicked mouse");
+		//label.setBackground(Color.yellow);
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		//System.out.println("you pressed mouse");
+		//label.setBackground(Color.blue);
+		label.setIcon(load);
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		//System.out.println("you released mouse");
+		//label.setBackground(Color.gray);
+		label.setIcon(exit);
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		//System.out.println("you entered mouse");	
+		//label.setBackground(Color.white);
+		label.setIcon(save);
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		//System.out.println("you exited mouse");
+		//label.setBackground(Color.black);
+		label.setIcon(rocket);
+	}
+	
+	
+}
+*****************************************************************************************
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+    
+		//key listener
+		
+		MyFrame frame = new MyFrame();
+	
+		 
+	 }
+ }
+	class MyFrame extends JFrame implements KeyListener {
+		
+		JLabel label;
+		ImageIcon icon;
+		
+		MyFrame(){
+			
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setSize(500,500);
+			this.setLayout(null);
+			
+			this.addKeyListener(this);
+			
+			icon = new ImageIcon("rocket.png");
+			
+			label = new JLabel();
+			label.setBounds(0,0,100,100);
+			label.setIcon(icon);
+			//1.label.setBackground(Color.red);
+			//1.label.setOpaque(true);
+			
+			this.getContentPane().setBackground(Color.black);
+			
+			
+			this.add(label);
+			
+			this.setVisible(true);
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			//  keyTyped= invoked when a physical key is pressed down.uses keycode,int output
+			switch(e.getKeyChar()) {
+			case 'a': label.setLocation(label.getX()-10, label.getY());
+			      break;
+			case 'w': label.setLocation(label.getX(), label.getY()-10);
+		      break;
+			case 's': label.setLocation(label.getX(), label.getY()+10);
+		      break;
+			case 'd': label.setLocation(label.getX()+10, label.getY());
+		      break;
+				
+			}
+			
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			//  keyPressed = invoked when a physical ky is pressed down.uses Keycodes ,int output
+			switch(e.getKeyCode()) {
+			case 37: label.setLocation(label.getX()-10, label.getY());
+			      break;
+			case 38: label.setLocation(label.getX(), label.getY()-10);
+		      break;
+			case 39: label.setLocation(label.getX()+10, label.getY());
+		      break;
+			case 40: label.setLocation(label.getX(), label.getY()+10);
+		      break;
+				
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// keyReleased = called whenever a button is released
+			//System.out.println("You released Key char: " +e.getKeyChar());
+			System.out.println("You released Key char: " +e.getKeyCode());
+		}
+	}
+**********************************************************************************************************************
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+    
+		//JColorChoosoer = a GUI mechanism that let's a user choose a color
+		
+		MyFrame frame = new MyFrame();
+	
+		 
+	 }
+ }
+	class MyFrame extends JFrame implements ActionListener{
+		
+		
+		
+		JButton button;
+		JLabel label;
+		JColorChooser colorchooser;
+		
+		
+		MyFrame(){
+			
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setSize(500,500);
+			this.setLayout(new FlowLayout());
+			
+			button = new JButton("Pic a Color");
+			button.addActionListener(this);
+			
+			label = new JLabel();
+			label.setBackground(Color.white);
+			label.setText("This is Awesome!!!");
+			label.setFont(new Font("MV Boli",Font.BOLD,25));;
+			label.setOpaque(true);
+			
+			this.add(button);
+			this.add(label);
+			this.pack();
+			this.setVisible(true);
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			if(e.getSource()== button) {
+		      JColorChooser colorchooser = new  JColorChooser();
+		      
+		      Color color = JColorChooser.showDialog(null, "Pick a color...I Guess", Color.black);
+		      
+		      
+			//label.setForeground(color);
+		     label.setBackground(color);
+		}
+	}
+	}
+*****************************************************************************************************************
+
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+    
+		//JFileChooser = A GUI mechanism that let's user choose a file (helpful for opening or saving files)
+		
+		MyFrame frame = new MyFrame();
+	
+		 
+	 }
+ }
+	class MyFrame extends JFrame implements ActionListener{
+		
+		
+		JMenuItem loaditem;
+		JMenuItem saveitem;
+		JMenuItem exititem;
+		JMenuBar menubar; 
+		JButton button;
+		File file;
+		JFileChooser fileChooser;
+		
+		MyFrame(){
+			
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setSize(500,500);
+			this.setLayout(new FlowLayout());
+			
+		
+			button = new JButton("Select File");
+			button.addActionListener(this);
+			
+			this.add(button);
+			this.pack();
+			this.setVisible(true);
+			
+			
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			if(e.getSource()== button) {
+		      fileChooser = new JFileChooser();
+		      fileChooser.setCurrentDirectory(new File("C:\\Users\\suraj\\Desktop"));
+				
+			//System.out.println(filechooser.showOpenDialog(null));	;//select file to open
+				//int response = filechooser.showOpenDialog(null);
+				int response = fileChooser.showSaveDialog(null);//select file to save
+				
+				if(response == JFileChooser.APPROVE_OPTION) {
+					file = new File(fileChooser.getSelectedFile().getAbsoluteFile(), null);
+					System.out.println(file);
+				}
+				
+			}
+		
+			
+		}
+	}
+
+**************************************************************************************************
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+    MyFrame frame = new MyFrame();
+	
+		 
+	 }
+ }
+	class MyFrame extends JFrame implements ActionListener{
+		
+		
+		JMenuItem loaditem;
+		JMenuItem saveitem;
+		JMenuItem exititem;
+		JMenuBar menubar; 
+		JMenu filemenu;
+		JMenu editmenu;
+		JMenu helpmenu;
+		ImageIcon loadicon;
+		ImageIcon saveicon;
+		ImageIcon exiticon;
+		
+		MyFrame(){
+			
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setSize(500,500);
+			this.setLayout(new FlowLayout());
+			loadicon = new ImageIcon("load.png");
+			saveicon = new ImageIcon("save.png");
+			exiticon = new ImageIcon("exit.png");
+			
+			
+		    menubar  = new JMenuBar();
+			 filemenu = new JMenu("file");
+			 editmenu = new JMenu("edit");
+			helpmenu = new JMenu("help");
+			
+			loaditem = new JMenuItem("load");
+			saveitem = new JMenuItem("save");
+			exititem = new JMenuItem("exit");
+			
+			loaditem.addActionListener(this);
+			saveitem.addActionListener(this);
+			exititem.addActionListener(this);
+			
+			loaditem.setIcon(loadicon);
+			saveitem.setIcon(saveicon);
+			exititem.setIcon(exiticon);
+			
+			
+			
+			filemenu.setMnemonic(KeyEvent.VK_F);//ALT + f for file
+			helpmenu.setMnemonic(KeyEvent.VK_H);//ALT +  for help
+			editmenu.setMnemonic(KeyEvent.VK_E);//ALT +  efor exit
+			loaditem.setMnemonic(KeyEvent.VK_L);//l for load
+			saveitem.setMnemonic(KeyEvent.VK_S);// s for save
+			exititem.setMnemonic(KeyEvent.VK_E);//e for exit
+			
+			
+			filemenu.add(loaditem);
+			filemenu.add(saveitem);
+			filemenu.add(exititem);
+			
+			
+			menubar.add(filemenu);
+			menubar.add(editmenu);
+			menubar.add(helpmenu);
+			
+			
+			
+			this.setJMenuBar(menubar);
+			
+			this.setVisible(true);
+			
+			
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource() == loaditem) {
+				System.out.println("***Loading***");
+			}
+			
+			if(e.getSource() == saveitem) {
+				System.out.println("***Saving***");
+			}
+			if(e.getSource() == exititem) {
+				System.exit(0);
+			}
+			
+		}
+	}
+
+		
+	
+		
+	
+
+
+		
+
+
+****************************************************************************************
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+
+	//progress bar = visual aid to let the user know that operation is progress
+		ProgressBarDemo demo = new ProgressBarDemo();
+		
+		
+		}	
+		
+	}
+ class ProgressBarDemo{
+	 
+	 JFrame frame = new JFrame();
+	 JProgressBar bar = new JProgressBar();
+	 ProgressBarDemo(){
+		 
+		 
+		 bar.setValue(0);
+		 
+		 bar.setBounds(0,0,420,50);
+		 bar.setStringPainted(true);
+		 bar.setFont(new Font("MV Boli",Font.BOLD,25));
+		 bar.setForeground(Color.RED);
+		 bar.setBackground(Color.black);
+		 
+		 
+		 
+		 
+		 frame.add(bar);
+		 
+		 
+		 
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.setSize(420,420);
+		 frame.setLayout(null);
+		 frame.setVisible(true);
+		 
+		 
+		 fill();
+	 }
+	 
+	 public void fill() {
+		 //1.bar.setValue(10);
+		 
+		 int counter = 0;
+		 while(counter<=100) {
+			 bar.setValue(counter);
+        
+			 try {
+		         Thread.sleep(50);
+             }
+			 catch (Exception e) {
+        	     e.printStackTrace();
+           }
+			 counter+=1;
+		 }
+		 bar.setString("Done!!");
+	 }
+ }
+*************************************************************************************
+import java.util.Scanner;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		    
+		    // JSlider =  GUI component that lets user enter a value 
+		    //    by using an adjustable sliding knob on a track
+		     
+		     SliderDemo sliderDemo = new SliderDemo();
+
+		    } 
+		  
+		} 
+		//***********************************************
+
+		class SliderDemo implements ChangeListener{
+
+		 JFrame frame;
+		 JPanel panel;
+		 JLabel label;
+		 JSlider slider;
+		 
+		 SliderDemo(){
+		  
+		  frame = new JFrame("Slider Demo");
+		  panel = new JPanel();
+		  label = new JLabel();
+		  slider = new JSlider(0,100,50);
+		  
+		  slider.setPreferredSize(new Dimension(400,200));
+		  
+		  slider.setPaintTicks(true);
+		  slider.setMinorTickSpacing(10);
+		  
+		  slider.setPaintTrack(true);
+		  slider.setMajorTickSpacing(25);
+		  
+		  slider.setPaintLabels(true);
+		  slider.setFont(new Font("MV Boli",Font.PLAIN,15));
+		  label.setFont(new Font("MV Boli",Font.PLAIN,25));
+		  
+		  //slider.setOrientation(SwingConstants.HORIZONTAL);
+		  slider.setOrientation(SwingConstants.VERTICAL);
+		  
+		  label.setText("°C = "+ slider.getValue());
+		  
+		  slider.addChangeListener(this);
+		  
+		  panel.add(slider);
+		  panel.add(label);
+		  frame.add(panel);
+		  frame.setSize(420,420);
+		  frame.setVisible(true);
+		 }
+		 
+		 @Override
+		 public void stateChanged(ChangeEvent e) {
+		  
+		  label.setText("°C = "+ slider.getValue());
+		  
+		 }
+
+		}
+
+**************************************************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+	//JComboBox = A component that combines a button or editable field and a drop down list
+		
+		
+		
+		MyFrame frame  = new MyFrame();
+	
+
+	}
+}
+	class MyFrame extends JFrame implements ActionListener{
+		JComboBox combobox;
+		
+		MyFrame(){
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setLayout(new FlowLayout());
+			
+			String[] animals = {"dog","cat","bird"};
+			combobox = new JComboBox(animals);
+			combobox.addActionListener(this);
+			
+			//combobox.setEditable(true);
+		    //System.out.println(combobox.getItemCount());
+			//combobox.addItem("horse");
+			//combobox.insertItemAt("pig", 0);
+			//combobox.setSelectedIndex(0);//selects the item of index 0 when it run first
+			//combobox.removeItem("cat");
+			//combobox.removeItemAt(0);
+			combobox.removeAllItems();
+			
+			
+		    this.add(combobox);
+			this.pack();
+			this.setVisible(true);
+			
+		}
+	
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource() == combobox) {
+				//System.out.println(combobox.getSelectedItem());
+				System.out.println(combobox.getSelectedIndex());
+			}
+		}
+	}
+			
+*********************************************************************************************************
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+	//JRadioButton = one or more button in a grouping in which only 1 may be selected per group
+		
+		
+		MyFrame frame  = new MyFrame();
+	
+
+	}
+}
+	class MyFrame extends JFrame implements ActionListener{
+		JRadioButton pizzabutton;
+		JRadioButton hamburgerbutton;
+		JRadioButton hotdogbutton;
+		ImageIcon pizzaicon;
+		ImageIcon hamburgericon;
+		ImageIcon hotdogicon;
+		
+		MyFrame(){
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setLayout(new FlowLayout());
+			
+			pizzaicon = new ImageIcon("pizza.png");
+			hamburgericon = new ImageIcon("hamburger.png");
+			hotdogicon = new ImageIcon("hot-dog.png");
+			
+			pizzabutton = new JRadioButton("Pizza");
+			hamburgerbutton = new JRadioButton("Hamburger");
+			hotdogbutton = new JRadioButton("HotDog");
+			
+			ButtonGroup group = new ButtonGroup();
+			group.add(pizzabutton);
+			group.add(hamburgerbutton);
+			group.add(hotdogbutton);
+			
+		    pizzabutton.addActionListener(this);
+		    hamburgerbutton.addActionListener(this);
+		    hotdogbutton.addActionListener(this);
+		    
+		    pizzabutton.setIcon(pizzaicon);
+		    hamburgerbutton.setIcon(hamburgericon);
+		    hotdogbutton.setIcon(hotdogicon);
+			
+			
+			this.add(pizzabutton);
+			this.add(hamburgerbutton);
+			this.add(hotdogbutton);
+			this.pack();
+			this.setVisible(true);
+			
+		}
+	
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource() == pizzabutton) {
+				System.out.println("you order Pizza");	
+			}
+			else if(e.getSource() ==hamburgerbutton) {
+				System.out.println("You order Hamburgur");
+			}
+			else if(e.getSource() ==hotdogbutton){
+				System.out.println("you order Hotdog");
+			}
+				
+		}
+	}
+			
+****************************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		//JTextField = a GUI text box component that can be used to add ,set or get text
+		
+		MyFrame frame  = new MyFrame();
+	
+
+	}
+}
+	class MyFrame extends JFrame implements ActionListener{
+		JButton button;
+		JTextField textfield;
+		JCheckBox checkbox;
+		ImageIcon xicon;
+		ImageIcon checkicon;
+		MyFrame(){
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setLayout(new FlowLayout());
+			
+			xicon = new ImageIcon("ethicalhacking.png");
+			checkicon = new ImageIcon("C:\\Users\\suraj\\Desktop\\dheru edited.jpg");
+			
+			button = new JButton();
+			button.setText("Sumit");
+			button.addActionListener(this);
+			
+			
+			checkbox = new JCheckBox();
+			checkbox.setText("I'm not a Robot");
+			checkbox.setFocusable(false);
+			checkbox.setFont(new Font("Consolas",Font.BOLD,30));
+			checkbox.setIcon(xicon);
+			checkbox.setSelectedIcon(checkicon);
+			
+			
+			this.add(button);
+			this.add(checkbox);
+			
+			
+			this.pack();
+			
+		   
+			this.setVisible(true);
+			
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource() == button) {
+				System.out.println(checkbox.isSelected());
+				
+				
+			}
+			
+			}
+		}
+		
+	
+		
+	
+
+
+		
+
+
+
+*************************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		//JTextField = a GUI text box component that can be used to add ,set or get text
+		
+		MyFrame frame  = new MyFrame();
+	
+
+	}
+}
+	class MyFrame extends JFrame implements ActionListener{
+		JButton button;
+		JTextField textfield;
+		MyFrame(){
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setLayout(new FlowLayout());
+			
+		    button  = new JButton("sumit");
+			button.addActionListener(this);
+			
+			textfield = new JTextField();
+			textfield.setPreferredSize(new Dimension(250,40));
+			textfield.setFont(new Font("Consolas",Font.BOLD,20));
+			textfield.setForeground(Color.RED);
+			textfield.setBackground(Color.BLACK);
+			textfield.setCaretColor(Color.WHITE);
+			textfield.setText("Username");
+			//textfield.setEditable(false);
+			
+			
+			this.add(button);
+			this.add(textfield);
+			
+			this.pack();
+			this.setVisible(true);
+			
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource() == button) {
+				System.out.println("welcome "+ textfield.getText());
+				button.setEnabled(false);
+				textfield.setEditable(false);//once you summit then after you can't summit another username
+			}
+		}
+		
+	}
+
+*********************************************************************************************************8
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+public class Main{
+
+	public static void main(String[] args) {
+	
+		//JOptionPane = pop up a standard dialog box that prompts users for a value 
+		//				or informs them of something.
+		
+		//JOptionPane.showMessageDialog(null, "This is a message dialog box", "title", JOptionPane.PLAIN_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "Here is some useless info", "title", JOptionPane.INFORMATION_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "really?", "title", JOptionPane.QUESTION_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "Your computer has a VIRUS!", "title", JOptionPane.WARNING_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "CALL TECH SUPPORT OR ELSE!", "title", JOptionPane.ERROR_MESSAGE);
+		
+		  
+		//int answer = JOptionPane.showConfirmDialog(null, "bro, do you even code?");
+		//String name = JOptionPane.showInputDialog("What is your name?: ");
+		
+		ImageIcon icon = new ImageIcon("smile.png");
+		String[] responses = {"No, you are!","thank you!","*blush*"};
+		int answer = JOptionPane.showOptionDialog(
+				null,
+				"You are the best! :D", 
+				"Secret message", 
+				JOptionPane.DEFAULT_OPTION, 
+				0, 
+				icon, 
+				responses, 
+				responses[0]);
+		System.out.println(answer);
+		
+	}
+}
+
+
+
+****************************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	//open new GUI window
+		
+		LaunchPage launchpage = new LaunchPage();
+		
+		
+		
+	}
+}
+  class LaunchPage implements ActionListener{
+	 JFrame frame = new JFrame();
+	 JButton mybutton = new JButton("new Window");
+	 
+	 LaunchPage(){
+		 mybutton.setBounds(100,160,200,40);
+		 mybutton.setFocusable(false);
+		 mybutton.addActionListener(this);
+		 
+		 frame.add(mybutton);
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.setSize(420,420);
+		 frame.setLayout(null);
+		 frame.setVisible(true);
+	 }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()== mybutton) {
+			frame.dispose();
+			NewWindow mywindow = new NewWindow();
+		}
+		
+	}
+	 
+	 
+ }
+class NewWindow{
+	JFrame frame = new JFrame();
+	JLabel label = new JLabel("hello!!!");
+	NewWindow(){
+		
+		label.setBounds(0, 0, 100, 50);
+		label.setFont(new Font(null,Font.PLAIN,25));
+		
+		
+		frame.add(label);
+		
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.setSize(420,420);
+		 frame.setLayout(null);
+		 frame.setVisible(true);
+	}
+}
+
+**************************************************************************************************
+
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+public class Project{
+	public static void main(String [] args) {
+		
+		//JFrame = a GUI to add component to
+		//JFrame frame = new JFrame();//create a frame
+		//frame.setTitle("App");//sets the title
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setResizable(false);//prevent frame from resizable
+		//frame.setSize(420,420);
+	    //frame.setVisible(true);
+		
+	    //ImageIcon image = new ImageIcon("ethicalhacking.png");//create an image icon
+	    //frame.setIconImage(image.getImage());//change the icon of frame
+	    //frame.getContentPane().setBackground(Color.DARK_GRAY);//set background color
+	    //frame.getContentPane().setBackground(new Color(255,0,0));//color from RGB
+	    MyFrame frame = new MyFrame();
+	}
+}
+
+class MyFrame extends JFrame{
+	MyFrame(){
+		
+		this.setTitle("App");//sets the title
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);//prevent this from resized
+		this.setSize(420,420);//x and y dimension
+	    this.setVisible(true);//make frame visible
+		
+	    ImageIcon image = new ImageIcon("ethicalhacking.png");//create an image icon
+	    this.setIconImage(image.getImage());//change the icon of this
+	    this.getContentPane().setBackground(Color.DARK_GRAY);//set background color
+	    this.getContentPane().setBackground(new Color(0,255,0));//color from RGB
+	}
+}
+***************************************************************************************
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		
+		//JLabel = a GUI display area for a string of text,image or both
+		ImageIcon image = new ImageIcon("ethicalhacking.png");//create an image icon
+		Border border = BorderFactory.createLineBorder(Color.green,3);
+		
+		JLabel label = new JLabel();
+		label.setText("Hello I am back");//set text of label
+		label.setIcon(image);
+		label.setHorizontalTextPosition(JLabel.CENTER);//set text LEFT, CENTER RIGHT of image icon
+		label.setVerticalTextPosition(JLabel.TOP);
+		label.setForeground(Color.red);
+		label.setFont(new Font("MV Boli",Font.PLAIN,50));//set the font of text
+		label.setIconTextGap(10);//set gap to text of image
+		label.setBackground(Color.BLACK);
+		label.setOpaque(true);//display background color
+		label.setBorder(border);
+		label.setVerticalAlignment(JLabel.CENTER);//set vertical position of icon+text within label
+		label.setHorizontalAlignment(JLabel.CENTER);//set horizontal position of icon+text within label
+		//label.setBounds(0,0,250,250);//set x y position within frame as well as dimension
+	
+		
+		JFrame frame = new JFrame();//create a frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setSize(500,500);
+		//frame.setLayout(null);
+	    frame.setVisible(true);
+	    frame.add(label);
+	    frame.pack();	   
+	    
+	}
+}
+********************************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		
+		//JPanel = a GUI component that function as a container to hold other component
+		ImageIcon icon = new ImageIcon("ethicalhacking.png");
+		
+		
+		JLabel label = new JLabel();
+		label.setText("hello");
+		label.setIcon(icon);
+		//label.setVerticalAlignment(JLabel.BOTTOM);
+		//label.setHorizontalAlignment(JLabel.RIGHT);
+		label.setBounds(5, 0, 100, 100);
+		
+		JPanel redpanel = new JPanel();
+		redpanel.setBackground(Color.red);
+		redpanel.setBounds(0, 0, 250, 250);
+		//redpanel.setLayout(new BorderLayout());
+		redpanel.setLayout(null);
+		
+		
+		JPanel bluepanel = new JPanel();
+		bluepanel.setBackground(Color.blue);
+		bluepanel.setBounds(250, 0, 250, 250);
+		//bluepanel.setLayout(new BorderLayout());
+		bluepanel.setLayout(null);
+		
+		JPanel greenpanel = new JPanel();
+		greenpanel.setBackground(Color.green);
+		greenpanel.setBounds(0, 250, 500, 250);
+		//greenpanel.setLayout(new BorderLayout());
+		greenpanel.setLayout(null);
+		
+		
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(600,600);
+		frame.setLayout(null);
+	    frame.setVisible(true);
+	    bluepanel.add(label);
+	    frame.add(redpanel);
+	    frame.add(bluepanel);
+	    frame.add(greenpanel);
+		
+		 
+	    
+	}
+}
+*************************************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		//JButton = a button that perform an action when clicked on
+		 MyFrame frame = new  MyFrame();
+		 JLabel label = new  JLabel();
+		 
+		
+		
+		
+		
+		
+	}
+}
+ class MyFrame extends JFrame implements ActionListener{
+//class MyFrame extends JFrame {
+	 JButton button;
+	 JLabel label;
+	MyFrame(){
+		ImageIcon icon = new ImageIcon("ethicalhacking.png");
+		ImageIcon icon2 = new ImageIcon("ethicalhacking.png");
+		
+		label = new  JLabel();
+		label.setIcon(icon2);
+		label.setBounds(150, 250, 150, 150);
+		label.setVisible(false);
+		
+        button = new JButton();
+        button.setBounds(200, 100, 200, 100);
+        button.addActionListener(this);
+        //2.button.addActionListener(e -> System.out.println("Hello Dhiraj"));
+        button.setText("click");
+        button.setFocusable(false);
+        button.setIcon(icon);
+        button.setHorizontalTextPosition(JButton.CENTER);
+        button.setVerticalTextPosition(JButton.BOTTOM);
+        button.setFont(new Font("Comic Sans", Font.BOLD,25));
+        button.setIconTextGap(-15);
+        button.setForeground(Color.CYAN);
+        button.setBackground(Color.LIGHT_GRAY);
+        button.setBorder(BorderFactory.createEtchedBorder());
+        //button.setEnabled(false); disable the button
+        
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          this.setLayout(null);
+          this.setSize(500,500);
+          this.setVisible(true);
+          this.add(button);
+          this.add(label);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == button) {
+			//System.out.println("HelloWorld");
+			//button.setEnabled(false);//only once you click the button after that button will be disabled 
+	        label.setVisible(true);
+		}
+		
+	}
+	
+ }	
+
+
+**************************************************************************************************************
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		//Layout Manager = defines the natural layout for the component with a container
+		//3 common manager
+		//Border Layout = a border layout places components in five areas : E,W,N,S and center
+		// all extra space is place in the center area
+		
+		JFrame frame = new  JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500,500);
+		frame.setLayout(new BorderLayout(10,10));//margin
+		frame.setVisible(true);
+		
+		JPanel panel1 = new JPanel();
+		JPanel panel2 = new JPanel();
+		JPanel panel3 = new JPanel();
+		JPanel panel4 = new JPanel();
+		JPanel panel5 = new JPanel();
+		
+		panel1.setBackground(Color.red);
+		panel2.setBackground(Color.green);
+		panel3.setBackground(Color.yellow);
+		panel4.setBackground(Color.magenta);
+		panel5.setBackground(Color.blue);
+		
+		
+		panel1.setPreferredSize(new Dimension (100,100));
+		panel2.setPreferredSize(new Dimension (100,100));
+		panel3.setPreferredSize(new Dimension (100,100));
+		panel4.setPreferredSize(new Dimension (100,100));
+		panel5.setPreferredSize(new Dimension (100,100));
+		
+		
+		
+		
+		//sub panels
+		JPanel panel6 = new JPanel();
+		JPanel panel7 = new JPanel();
+		JPanel panel8 = new JPanel();
+		JPanel panel9 = new JPanel();
+		JPanel panel10 = new JPanel();
+		
+		panel6.setBackground(Color.black);
+		panel7.setBackground(Color.darkGray);
+		panel8.setBackground(Color.gray);
+		panel9.setBackground(Color.lightGray);
+		panel10.setBackground(Color.white);
+		
+		panel5.setLayout(new BorderLayout());
+		
+		
+		panel6.setPreferredSize(new Dimension (50,50));
+		panel7.setPreferredSize(new Dimension (50,50));
+		panel8.setPreferredSize(new Dimension (50,50));
+		panel9.setPreferredSize(new Dimension (50,50));
+		panel10.setPreferredSize(new Dimension (50,50));
+		
+		panel5.add(panel6,BorderLayout.NORTH);
+		panel5.add(panel7,BorderLayout.SOUTH);
+		panel5.add(panel8,BorderLayout.EAST);
+		panel5.add(panel9,BorderLayout.WEST);
+		panel5.add(panel10,BorderLayout.CENTER);
+		
+		//end of sub panel
+		
+		
+		frame.add(panel1,BorderLayout.NORTH);
+		frame.add(panel2,BorderLayout.WEST);
+		frame.add(panel3,BorderLayout.EAST);
+		frame.add(panel4,BorderLayout.SOUTH);
+		frame.add(panel5,BorderLayout.CENTER);
+			
+		
+	}
+}
+ *************************************************************************************************************************8
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		//Layout Manager = defines the natural layout for the component with a container
+		
+		//Flow Layout = places component in a row, sized at their preferred size,
+		//if the horizontal space in the container is too small,
+		//  FlowLayout class uses the next available row.
+		
+		
+		JFrame frame = new  JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500,500);
+		frame.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));//stick on center
+		
+		JPanel panel  = new JPanel();
+		panel.setPreferredSize(new Dimension(100,250));
+        panel.setBackground(Color.LIGHT_GRAY);
+        panel.setLayout(new FlowLayout());
+		
+		//JButton button1 = new JButton();//also works for button
+		
+		panel.add(new JButton("1"));
+		panel.add(new JButton("2"));
+		panel.add(new JButton("3"));
+		panel.add(new JButton("4"));
+		panel.add(new JButton("5"));
+		panel.add(new JButton("6"));
+		panel.add(new JButton("7"));
+		panel.add(new JButton("8"));
+		panel.add(new JButton("9"));
+		
+		frame.add(panel);
+		
+		frame.setVisible(true);
+		
+	}
+}
+ 
+*******************************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		//Layout Manager = defines the natural layout for the component with a container
+		
+		//Grid Layout = places components in a grid of cells.
+		// each component takes the available space with in cell,
+		//and each cell is the same size
+		
+		
+		JFrame frame = new  JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500,500);
+		
+		
+		JButton button  = new JButton();
+		frame.setLayout(new GridLayout(3,3,10,10));//sets the rows and column and margin vertical and horizontal
+		
+		
+		frame.add(new JButton("1"));
+		frame.add(new JButton("2"));
+		frame.add(new JButton("3"));
+		frame.add(new JButton("4"));
+		frame.add(new JButton("5"));
+		frame.add(new JButton("6"));
+		frame.add(new JButton("7"));
+		frame.add(new JButton("8"));
+		frame.add(new JButton("9"));
+		frame.add(new JButton("10"));
+		
+	
+		
+		frame.setVisible(true);
+		
+	}
+}
+ 
+*************************************************************************************************************
+
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		//JLayeredPane  = swing container that provide a third dimension for positioning components 
+		// ex: depth, Z-index
+		
+		JLabel label1 = new JLabel();
+		label1.setOpaque(true);
+		label1.setBackground(Color.RED);
+		label1.setBounds(50, 50, 200,200);
+		
+		JLabel label2 = new JLabel();
+		label2.setOpaque(true);
+		label2.setBackground(Color.GREEN);
+		label2.setBounds(100, 100, 200,200);
+		
+		JLabel label3 = new JLabel();
+		label3.setOpaque(true);
+		label3.setBackground(Color.BLUE);
+		label3.setBounds(150, 150, 200,200);
+		
+		JLayeredPane layeredpane = new JLayeredPane();
+		layeredpane.setBounds(0,0,500,500);
+		
+		//layeredpane.add(label1,Integer.valueOf(0));//also this 0 value on top same as JLayeredPane.DEFAULT_LAYER
+		layeredpane.add(label1,JLayeredPane.DEFAULT_LAYER);
+		layeredpane.add(label2,JLayeredPane.DEFAULT_LAYER);
+		layeredpane.add(label3,JLayeredPane.DRAG_LAYER);
+		
+		
+		JFrame frame = new  JFrame("JLayeredPane");
+		frame.add(layeredpane);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(new Dimension(500,500));
+		frame.setLayout(null);
+		
+		
+		
+		
+	
+		
+		frame.setVisible(true);
+		
+	}
+}
+ 
+****************************************************************************************************************************8
+
+
+
+
+
+
+
+

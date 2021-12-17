@@ -1,0 +1,448 @@
+public static void main(String [] args)throws InterruptedException{
+				ImageIcon icon = new ImageIcon("rocket.png");
+				JLabel label = new JLabel();
+				label.setText("**100DayCodingChallenge**");
+				label.setIcon(icon);
+				label.setVerticalAlignment(JLabel.TOP);
+				label.setHorizontalAlignment(JLabel.LEFT);
+				JPanel redPanel = new JPanel();
+				redPanel.setBackground(Color.red);
+				redPanel.setBounds(0, 0, 250, 250);
+				redPanel.setLayout(new BorderLayout());
+				JPanel bluePanel = new JPanel();
+				bluePanel.setBackground(Color.blue);
+				bluePanel.setBounds(250, 0, 250, 250);
+				bluePanel.setLayout(new BorderLayout());
+				JPanel greenPanel = new JPanel();
+				greenPanel.setBackground(Color.green);
+				greenPanel.setBounds(0, 250, 500, 250);
+				greenPanel.setLayout(new BorderLayout());
+				JFrame frame = new JFrame();
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setLayout(null);
+				frame.setSize(508,510);
+				frame.setVisible(true);	
+				greenPanel.add(label);
+				frame.add(redPanel);
+				frame.add(bluePanel);
+				frame.add(greenPanel);
+			}
+		}
+
+*****************************************************
+
+public static void main(String [] args) throws UnsupportedAudioFileException, 
+	IOException, LineUnavailableException{
+				
+				ImageIcon image = new ImageIcon("dude.png");
+				Border border = BorderFactory.createLineBorder(Color.green,3);	
+				JLabel label = new JLabel(); //create a label
+				label.setText("100daysofcodechallenge"); //set text of label
+				label.setIcon(image);
+				label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT,CENTER, RIGHT of imageicon
+				label.setVerticalTextPosition(JLabel.TOP); //set text TOP,CENTER, BOTTOM of imageicon
+				label.setForeground(Color.red); //set font color of text
+				label.setFont(new Font("MV Boli",Font.PLAIN,100)); //set font of text
+				label.setIconTextGap(-25); //set gap of text to image
+				label.setBackground(Color.black); //set background color
+				label.setOpaque(true); //display background color
+				//label.setBorder(border); //sets border of label (not image+text)
+				label.setVerticalAlignment(JLabel.CENTER); //set vertical position of icon+text within label
+				label.setHorizontalAlignment(JLabel.CENTER); //set horizontal position of icon+text within label
+				//label.setBounds(100, 100, 250, 250); //set x,y position within frame as well as dimensions	
+				JFrame frame = new JFrame();
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				//frame.setSize(500,500);
+				//frame.setLayout(null);
+				frame.setVisible(true);	 
+				frame.add(label);
+				frame.pack();	
+			}
+		}
+
+
+******************************************************************************************************
+
+public class Project{
+	public static void main(String [] args) throws UnsupportedAudioFileException, 
+	IOException, LineUnavailableException{
+  JFrame frame = new JFrame(); //creates a frame
+  frame.setTitle("Facebook"); //sets title of frame
+  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //exit from application
+  frame.setResizable(false); //prevent frame from being resized
+  frame.setSize(420,420); //sets the x-dimension, and y-dimension of frame
+  frame.setVisible(true); //make frame visible
+  frame.setLocationRelativeTo(null);
+  
+  ImageIcon image = new ImageIcon("hamburger.png"); //create an ImageIcon
+  frame.setIconImage(image.getImage()); //change icon of frame
+  frame.getContentPane().setBackground(Color.DARK_GRAY); //change color of background
+    
+ }
+}
+
+************************************************************************************************
+	public static void main(String [] args) throws UnsupportedAudioFileException, 
+	IOException, LineUnavailableException{
+		  Scanner scanner = new Scanner(System.in); 
+		  File file = new File("Night Run Away - An Jone.wav");
+		  AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+		  Clip clip = AudioSystem.getClip();
+		  clip.open(audioStream);  
+		  String response = "";
+		  while(!response.equals("Q")) {
+		   System.out.println("P = play, S = Stop, R = Reset, Q = Quit");
+		   System.out.print("Enter your choice: ");  
+		   response = scanner.next();
+		   response = response.toUpperCase(); 
+		   switch(response) {
+		    case ("P"): clip.start();
+		    break;
+		    case ("S"): clip.stop();
+		    break;
+		    case ("R"): clip.setMicrosecondPosition(0);
+		    break;
+		    case ("Q"): clip.close();
+		    break;
+		    default: System.out.println("Not  valid ");
+		   }   
+		  }
+		  System.out.println("Have a good day"); 
+	}
+	}
+
+
+
+*******************************************************************************************
+/* try {
+			   FileWriter writer = new FileWriter("Msg.txt");//write in a file
+			   writer.write("I love Java");
+			   writer.append("\n \n- DheRu");
+			   writer.close();
+			  } 
+			  catch (IOException e) {
+			   e.printStackTrace();
+			  }
+	}
+}*/
+      try {
+	   FileReader reader = new FileReader("Msg.txt");//read from file
+	   int data = reader.read();
+	   while(data != -1) {
+	    System.out.print((char)data);
+	    data = reader.read();
+	   }
+	   reader.close(); 
+	  } catch (FileNotFoundException e) {
+	   e.printStackTrace();
+	  } catch (IOException e) {
+	   e.printStackTrace();
+	  }
+	}
+}
+      
+
+
+*****************************************************************************************************************************
+
+public class Project{
+	public static void main(String [] args) {
+		  File file = new File("secret.txt");
+		  
+		  if(file.exists()) {
+		   System.out.println("That file exists! :O!");
+		   System.out.println(file.getPath());
+		   System.out.println(file.getAbsolutePath());
+		   System.out.println(file.isFile());
+		   file.delete();
+		  }
+		  else {
+		   System.out.println("That file doesn't exist :(");
+		  }  
+	}
+}
+
+
+
+**********************************************************************
+public class Project{
+	public static void main(String [] args) {
+//exception  = "an event that occurs during the execution of a program that disrupts the normal flow of instructions"
+				Scanner scanner = new Scanner(System.in);
+				try {
+					System.out.println("Enter a whole number to divide: ");
+					int x = scanner.nextInt();
+					System.out.println("Enter a whole number to divide by: ");
+					int y = scanner.nextInt();
+					int z = x/y;
+					System.out.println("result: " + z);
+				}
+				catch(ArithmeticException e) {
+					System.out.println("You can't divide by zero! IDIOT!");
+				}
+				catch(InputMismatchException e) {
+					System.out.println("PLEASE ENTER A NUMBER Again");
+				}
+				catch(Exception e) {
+					System.out.println("Something went wrong");
+				}
+				finally {
+					scanner.close();
+				}
+			}
+		}
+		
+
+********************************************************************************
+import java.util.Scanner;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+		
+		  //Dynamic Polymorphism
+		  Scanner scanner = new Scanner(System.in);
+		  Animal animal; 
+		  System.out.println("What animal do you want?"); 
+		  System.out.print("(1=dog) or (2=cat): ");
+		  int choice = scanner.nextInt(); 
+		  if(choice==1) {
+		   animal = new Dog();
+		   animal.speak();
+		  }
+		  else if(choice==2) {
+		   animal = new Cat();
+		   animal.speak();
+		  }
+		  else {
+		   animal = new Animal();
+		   System.out.println("That choice was invalid");
+		   animal.speak();
+		  }
+		 }
+		}
+		
+	 class Animal {
+
+		 public void speak() {
+		  System.out.println("animal goes *brrrr*");
+		 }}
+		 class Dog extends Animal{
+		 @Override
+		 public void speak() {
+		  System.out.println("dog goes *bark*");
+		 }
+		}
+	    class Cat extends Animal{
+		 @Override
+		 public void speak() {
+		  System.out.println("cat goes *meow*");
+		 }
+		}
+		
+
+***************************************************************************************
+
+public class Project{
+	public static void main(String [] args) {
+				Car car = new Car();
+				Bicycle bicycle = new Bicycle();
+				Boat boat = new Boat();
+				
+				Vehicle[] racers = {car,bicycle,boat};
+				
+				for(Vehicle x : racers) {
+					x.go();
+				}		
+			}
+		}
+		 class Vehicle {
+
+			public void go() {
+				// TODO Auto-generated method stub				
+			}
+		}
+		 class Car extends Vehicle{
+			@Override
+			public void go() {
+				System.out.println("*The car begins moving*");
+			}
+		}		
+	 class Bicycle extends Vehicle{
+			@Override
+			public void go() {
+				System.out.println("*The bicycle begins moving*");
+			}
+		}
+		 class Boat extends Vehicle{
+			@Override
+			public void go() {
+				System.out.println("*The boat begins moving*");
+			}		
+	}
+
+
+
+
+
+********************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+	
+		Car car1 = new Car("Range Rover","Anaconda",2021);
+		//Car car2 = new Car("Ford","Mustang",2022);
+		//car2.copy(car1);
+		Car car2 = new Car(car1);
+		System.out.println(car1);
+		System.out.println(car2);
+		System.out.println();
+		System.out.println(car1.getMake());
+		System.out.println(car1.getModel());
+		System.out.println(car1.getYear());
+		System.out.println();
+		System.out.println(car2.getMake());
+		System.out.println(car2.getModel());
+		System.out.println(car2.getYear());	
+	}
+}
+class Car {
+	private String make;
+	private String model;
+	private int year;
+	Car(String make,String model,int year){
+		this.setMake(make);
+		this.setModel(model);
+		this.setYear(year);
+	}
+	Car(Car x){
+		this.copy(x);
+	}
+	public String getMake() {
+		return make;
+	}
+	public String getModel() {
+		return model;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setMake(String make) {
+		this.make = make;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public void copy(Car x) {
+		this.setMake(x.getMake());
+		this.setModel(x.getModel());
+		this.setYear(x.getYear());
+	}		
+}
+		
+***************************************************************************************
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class Project{
+	public static void main(String [] args) {
+				Fish fish = new Fish();
+				fish.hunt();
+				fish.flee();				
+			}
+		}
+	
+    interface Prey {
+			void flee();
+		}
+	interface Predator {
+			void hunt();
+		}
+	 class Rabbit implements Prey{
+			@Override
+			public void flee() {
+				System.out.println("*The rabbit is fleeing*");	
+		        }
+		}
+	class Hawk implements Predator{
+			@Override
+			public void hunt() {
+				System.out.println("*The hawk is hunting*");	
+		        }
+		}
+	class Fish implements Prey,Predator{
+			@Override
+			public void hunt() {
+				System.out.println("*The fish is hunting*");		
+			}
+			@Override
+			public void flee() {
+				System.out.println("*The fish is fleeing*");	
+			}
+		}
+		
+		
+		
