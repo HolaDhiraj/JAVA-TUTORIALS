@@ -1,0 +1,1 @@
+Here you can learn how to code in JAVA (Beginner to Advance). Also, here you get 3 steps or stages(Beginner, intermediate, and Advannce) of programming in JAVA.This is only the coding base practice that helps you increase in coding. After learning from this repo, you will be able to do commencing level developer in JAVA. 
